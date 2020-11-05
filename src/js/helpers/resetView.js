@@ -1,6 +1,13 @@
 function resetView(categorys) {
   const headline = document.querySelector(".box-headline");
   headline.innerHTML = "Joe's Clothings";
+  //restet warenkorb button
+  const cartButton = document.querySelector(`.cart-button`);
+  const cartPay = document.querySelector(`.cart-pay`);
+  cartButton.setAttribute("style", "");
+  cartButton.innerHTML = "Warenkorb";
+
+  cartPay.setAttribute("style", "");
 
   document
     .querySelector(".categorys")
@@ -13,9 +20,16 @@ function resetView(categorys) {
       .getElementById(`items-${category.id}`)
       .setAttribute(
         "style",
-        "transform: translate3d(500px, 0px, 0px); opacity: 0;"
+        "transform: translate3d(600px, 0px, 0px); opacity: 0;"
       );
   });
+
+  document
+    .querySelector(".carts")
+    .setAttribute(
+      "style",
+      "transform: translate3d(600px, 0px, 0px); opacity: 0;"
+    );
 
   const icon = document.querySelector(".icon");
   const back = document.querySelector(".back");
