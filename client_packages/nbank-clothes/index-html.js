@@ -1,8 +1,3 @@
-import data from "../data/data.js";
-import resetView from "./helpers/resetView.js";
-import openItemsView from "./helpers/openItemsView.js";
-import openCart from "./helpers/openCart.js";
-
 const selectedItems = [];
 let boxHeadline = "";
 let cartValue = 0;
@@ -65,6 +60,15 @@ function setupShop() {
   const category = document.querySelector(".temp__category");
   const categoryItems = document.querySelector(".temp__items-category");
   const tempItem = document.querySelector(".temp__item");
+
+
+  document
+  .querySelector(".shop-box")
+  .setAttribute(
+    "style",
+    "opacity: 1;"
+  );
+
 
   const cartIcon = document.querySelector(".icon");
 
@@ -208,6 +212,141 @@ function setupShop() {
       }
     }
   });
+
+  return true;
+
 }
 
-setupShop();
+const data = {
+  items: [
+    {
+      id: "2ff8e194-4d8a-4a39-9dba-878b4926397d",
+      name: "Gangpulli",
+      category: "sweater",
+      price: 120,
+    },
+    {
+      id: "0c250443-ba7e-4336-8d46-b0f6cfdb209f",
+      name: "Cop Pulli",
+      category: "sweater",
+      price: 10,
+    },
+    {
+      id: "0c250443-ba7e-4336-8d46-b0f6cfdb209a",
+      name: "Noel Pullover 187 Gang",
+      category: "sweater",
+      price: 0,
+    },
+    {
+      id: "e51202a3-a040-4070-9528-19509469f61a",
+      name: "Medic Shirt",
+      category: "shirts",
+      price: 100,
+    },
+  ],
+  categorys: [
+    { id: "sweater", name: "Hoddies" },
+    { id: "shirts", name: "T-Shirts" },
+  ],
+};
+
+function openCart(selectedItems) {
+  const cartButton = document.querySelector(`.cart-button`);
+  const cartPay = document.querySelector(`.cart-pay`);
+
+  if (cartButton.innerHTML === "Jetzt Kaufen") {
+    //process buy
+    if (selectedItems.length !== 0) {
+      cartButton.setAttribute("style", "opacity: 0; display: none;");
+      setTimeout(function () {
+        cartPay.setAttribute("style", "opacity: 1; display: block;");
+      }, 250);
+    }
+  } else {
+    const headline = document.querySelector(".box-headline");
+
+    const cartWithItems = document.querySelector(`.carts`);
+
+    const back = document.querySelector(".back");
+
+    back.setAttribute("style", "opacity: 1");
+
+    headline.innerHTML = "Warenkorb";
+    cartWithItems.setAttribute(
+      "style",
+      "transform: translate3d(0, 0px, 0px); opacity: 1;"
+    );
+    cartButton.setAttribute("style", "background-color: green; color: white;");
+    cartButton.innerHTML = "Jetzt Kaufen";
+  }
+}
+
+function openItemsView(id, boxHeadline) {
+  const headline = document.querySelector(".box-headline");
+
+  const categoryItems = document.getElementById(`items-${id}`);
+
+  const icon = document.querySelector(".icon");
+  const back = document.querySelector(".back");
+
+  icon.setAttribute("style", "opacity: 0; pointer-events: none;");
+  back.setAttribute("style", "opacity: 1");
+
+  headline.innerHTML = boxHeadline;
+  categoryItems.setAttribute(
+    "style",
+    "transform: translate3d(0, 0px, 0px); opacity: 1;"
+  );
+}
+
+function resetView(categorys) {
+  const headline = document.querySelector(".box-headline");
+  headline.innerHTML = "Joe's Clothings";
+  //restet warenkorb button
+  const cartButton = document.querySelector(`.cart-button`);
+  const cartPay = document.querySelector(`.cart-pay`);
+  cartButton.setAttribute("style", "");
+  cartButton.innerHTML = "Warenkorb";
+
+  cartPay.setAttribute("style", "");
+
+  document
+    .querySelector(".categorys")
+    .setAttribute("style", "transform: translate3d(0, 0px, 0px); opacity: 1;");
+
+  // reset all category views
+
+  categorys.forEach(function (category) {
+    document
+      .getElementById(`items-${category.id}`)
+      .setAttribute(
+        "style",
+        "transform: translate3d(600px, 0px, 0px); opacity: 0;"
+      );
+  });
+
+  document
+    .querySelector(".carts")
+    .setAttribute(
+      "style",
+      "transform: translate3d(600px, 0px, 0px); opacity: 0;"
+    );
+
+  const icon = document.querySelector(".icon");
+  const back = document.querySelector(".back");
+
+  icon.setAttribute("style", "opacity: 0");
+  back.setAttribute("style", "opacity: 0; pointer-events: none;");
+}
+
+
+function closeShop()  {
+  document
+  .querySelector(".shop-box")
+  .setAttribute(
+    "style",
+    ""
+  );
+
+  return true;
+}
