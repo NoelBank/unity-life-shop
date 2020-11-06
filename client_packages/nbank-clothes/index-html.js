@@ -333,7 +333,7 @@ function closeShop() {
   return true;
 }
 
-function setupShop() {
+function openShop() {
   document.querySelector(".shop-box").setAttribute("style", "opacity: 1;");
 
   return true;
