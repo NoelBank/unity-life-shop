@@ -7,4 +7,7 @@ to test - hosted on netlify
 
 for insipration i created a small design u can see in unity.pds
 
-to test stuff in browser u need to press f12 and write `openShop();` to open shop and `closeShop();` to close it
+to test stuff in browser u need to press f12 and write:
+- ``setupShop();` to setupShop
+- `openShop();` to open shop 
+- `closeShop();` to close it
