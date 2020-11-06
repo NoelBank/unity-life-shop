@@ -1,7 +1,7 @@
 const scoreboardBrowser = mp.browsers.new('package://nbank-clothes/index.html');
 
 mp.events.add("shop:open", () => {
-    scoreboardBrowser.execute("setupShop();");
+    scoreboardBrowser.execute("openShop();");
     mp.gui.chat.push("open shop");
 })
 

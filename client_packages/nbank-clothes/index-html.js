@@ -61,15 +61,6 @@ function setupShop() {
   const categoryItems = document.querySelector(".temp__items-category");
   const tempItem = document.querySelector(".temp__item");
 
-
-  document
-  .querySelector(".shop-box")
-  .setAttribute(
-    "style",
-    "opacity: 1;"
-  );
-
-
   const cartIcon = document.querySelector(".icon");
 
   cartIcon.onclick = function () {
@@ -212,9 +203,6 @@ function setupShop() {
       }
     }
   });
-
-  return true;
-
 }
 
 const data = {
@@ -339,14 +327,14 @@ function resetView(categorys) {
   back.setAttribute("style", "opacity: 0; pointer-events: none;");
 }
 
+function closeShop() {
+  document.querySelector(".shop-box").setAttribute("style", "");
 
-function closeShop()  {
-  document
-  .querySelector(".shop-box")
-  .setAttribute(
-    "style",
-    ""
-  );
+  return true;
+}
+
+function setupShop() {
+  document.querySelector(".shop-box").setAttribute("style", "opacity: 1;");
 
   return true;
 }
