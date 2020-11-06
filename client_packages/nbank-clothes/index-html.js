@@ -338,3 +338,5 @@ function openShop() {
 
   return true;
 }
+
+setupShop();
